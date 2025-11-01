@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { LogInIcon, LogOut, Menu, School2Icon, UsersIcon, X, User } from 'lucide-react';
+import { LogInIcon, LogOut, Menu, School2Icon, UsersIcon, X, User, UploadCloud } from 'lucide-react';
 import { logout } from '../Store/slicer';
 import { useState } from 'react';
-import { MdDashboard, MdOutlineLogin, MdWorkspaces } from 'react-icons/md';
+import { MdDashboard } from 'react-icons/md';
 import LoginModal from './LoginModal';
 import {BiSolidSchool} from "react-icons/bi";
 
@@ -68,6 +68,7 @@ Navbar() {
               )}
 
               {user && user.role === "superadmin" && (
+                <>
                 <Link
                   to="/all-users"
                   className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200"
@@ -75,6 +76,16 @@ Navbar() {
                   <UsersIcon className="h-4 w-4" />
                   <span>All Members</span>
                 </Link>
+
+                          <Link
+                  to="/timetable"
+                  className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200"
+                >
+                  <UploadCloud className="h-4 w-4" />
+                  <span>TimeTable</span>
+                </Link>
+                                </>
+
               )}
             </div>
 

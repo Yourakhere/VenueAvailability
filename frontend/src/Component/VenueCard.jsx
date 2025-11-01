@@ -146,11 +146,24 @@ const VenueCard = ({ venue, onBookVenue, date, refreshVenues }) => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-red-700">Booked Time</span>
-                <span className="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">
+              <div className="flex flex-col items-center justify-between">
+                <div className='flex  justify-between gap-4 items-center'>
+                <span className="text-sm  font-medium text-red-700">Booked Time</span>
+                <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full font-medium">
                   {bookedTime}
                 </span>
+                </div>
+             
+                { venue?.booking && venue?.booking?.bookedBy &&(
+                    <div className="bg-gradient-to-r w-full flex justify-around items-center from-gray-50 to-blue-50 border border-blue-200 rounded-lg py-2 mt-2 text-center">
+                      <p className="text-xs text-gray-600 mb-1">Booked By :</p>
+                      <p className="text-sm font-bold text-blue-800">
+                        {venue?.booking?.bookedBy?.username.toUpperCase()}
+                      </p>
+                    </div>
+                
+                )
+                }
               </div>
             )}
           </div>
@@ -174,16 +187,7 @@ const VenueCard = ({ venue, onBookVenue, date, refreshVenues }) => {
                   >
                     {loading ? 'Canceling...' : 'Cancel Booking'}
                   </button>
-                  
-                  {/* Show who booked */}
-                  {bookedBy && (
-                    <div className="bg-gradient-to-r from-gray-50 to-blue-50 border border-blue-200 rounded-lg p-3 text-center">
-                      <p className="text-xs text-gray-600 mb-1">Booked By</p>
-                      <p className="text-sm font-bold text-blue-800">
-                        {(bookedBy?.username || bookedBy?.name || 'Unknown User').toUpperCase()}
-                      </p>
-                    </div>
-                  )}
+                                 
                 </div>
               )
             ) : (
