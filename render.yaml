@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: timetable-backend
+    env: node
+    rootDir: backend
+    plan: free
+    buildCommand: |
+      npm install
+      apt-get update && apt-get install -y python3 python3-pip
+      pip3 install -r requirements.txt
+    startCommand: node index.js
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://himanshudeolia0825:1hqVCAshDg50eFiD@cluster0.0cosamw.mongodb.net/Venue
